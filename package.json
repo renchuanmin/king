@@ -1,0 +1,17 @@
+{
+  "name": "king",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/renchuanmin/king.git",
+  "author": "renchuanmin <1876120641@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.7.1"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "deploy": "gh-pages -d docs/.vuepress/dist",
+    "commit": "yarn docs:build && yarn deploy"
+  }
+}
