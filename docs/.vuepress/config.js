@@ -6,63 +6,44 @@ module.exports = {
   base: "/king/", // 配合部署项目
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   lastUpdated: "Last Updated",
+
   themeConfig: {
-    //主题配置
-    // logo: '/img/logo.png',
+    search: false,
     nav: [
-      // 导航栏配置
-      {
-        text: "Home",
-        link: "/", // '/'默认为docs文件夹下的README.md文件
-      },
-      {
-        text: "Blog",
-        link: "/blog/",
-      },
-      {
-        text: "Space",
-        link: "/space/",
-      },
-      {
-        text: "GitHub",
-        link: "https://github.com/renchuanmin/king.git",
-      },
+      { text: "Home", link: "/" },
+      { text: "About", link: "/about/" },
+      { text: "Projects", link: "/projects/" },
+      { text: "Guide", link: "/guide/" },
+      { text: "GitHub", link: "https://github.com/renchuanmin/king.git" }
     ],
     sidebar: {
-      //侧边拦
-      "/blog/": [
-        {
-          title: "前端daily", //sidebar 侧边栏名称
-          collapsable: true, // 可折叠
-          children: [
-            "/blog/javaScript/one", //文章地址
-            "/blog/javaScript/two",
-          ],
-        },
-        {
-          title: "框架相关",
-          collapsable: true,
-          children: ["/blog/framework/vuepressBlog"],
-        },
-        {
-          title: "工具收藏",
-          collapsable: true,
-          children: ["/blog/tools/one", "/blog/tools/two"],
-        },
-      ],
-      "/space/": [
-        {
-          title: "诗和远方",
-          collapsable: true,
-          children: ["/space/poetryAndDistance/one"],
-        },
-        {
-          title: "谝闲传",
-          collapsable: true,
-          children: ["/space/talk/one"],
-        },
-      ],
+      '/guide/': genSidebarConfig('Guide')
     },
-    sidebarDepth: 2, // 侧边栏显示2级
+    sidebarDepth: 2,
+    lastUpdated: 'Last Updated'
   },
+
+  markdown: {
+    // options for markdown-it-anchor
+    anchor: { permalink: false },
+    extendMarkdown: md => {
+      md.use(require("markdown-it-katex"));
+    }
+  }
 };
+
+function genSidebarConfig (title) {
+  return [
+    {
+      title,
+      collapsable: false,
+      children: [
+        '',
+        'getting-started',
+        'customize',
+        'advanced',
+      ]
+    }
+  ]
+}
+
