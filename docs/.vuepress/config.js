@@ -12,19 +12,19 @@ module.exports = {
     nav: [
       { text: "Home", link: "/" },
       { text: "About", link: "/about/" },
-      { text: "Projects", link: "/projects/" },
+      { text: "Project", link: "/project/" },
       { text: "Guide", link: "/guide/" },
       { text: "GitHub", link: "https://github.com/renchuanmin/king.git" }
     ],
     sidebar: {
-      '/guide/': genSidebarConfig('Guide')
+      '/project/': penSidebarConfig('Project'),
+      '/guide/': genSidebarConfig('Guide'),
     },
     sidebarDepth: 2,
     lastUpdated: 'Last Updated'
   },
 
   markdown: {
-    // options for markdown-it-anchor
     anchor: { permalink: false },
     extendMarkdown: md => {
       md.use(require("markdown-it-katex"));
@@ -39,11 +39,25 @@ function genSidebarConfig (title) {
       collapsable: false,
       children: [
         '',
-        'getting-started',
-        'customize',
-        'advanced',
+        'css',
+        'JavaScript',
+        'canvas',
       ]
-    }
+    },
+  ]
+}
+function penSidebarConfig (title) {
+  return [
+    {
+      title,
+      collapsable: false,
+      children: [
+        '',
+        'aa',
+        'bb',
+        'dd',
+      ]
+    },
   ]
 }
 
